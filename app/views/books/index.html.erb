@@ -1,0 +1,22 @@
+<h1>Book Collection</h1>
+
+<% if notice %>
+  <p style="color: green;"><%= notice %></p>
+<% end %>
+
+<%= link_to "Add New Book", new_book_path %>
+
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <%= book.title %> |
+      <%= link_to "Show", book %> |
+      <%= link_to "Edit", edit_book_path(book) %> |
+      <%= link_to "Delete", book,
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %>
+    </li>
+  <% end %>
+</ul>
